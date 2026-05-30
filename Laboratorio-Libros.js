@@ -1,5 +1,7 @@
 const prompt = require(`prompt-sync`)();
 
+
+//Ejercicio 1 - Libro
 function Libro(titulo, autor) {
   this.titulo = titulo;
   this.autor = autor;
@@ -23,7 +25,7 @@ let libro2 = new Libro("aleluya2", "diosito2");
 libro2.prestar();
 libro2.prestar();
 
-
+// Ejercicio 2 - Lista de Compras
 
 function ListaCompras() {
     this.productos = [];
@@ -44,7 +46,7 @@ compra.agregar();
 compra.mostrar();
 
 
-// Reproductor de música 
+// Ejercicio 3 - Reproductor de música 
 function Reproductor() {
     this.estado = "detenido";
     this.play = function() {
@@ -75,3 +77,31 @@ let mp3 = new Reproductor();
 ipod.estado("reproduciendo");
 ipod.estado("pausado");
 
+
+// Ejercicio 4 - Carrito
+function Carrito() {
+    this.productos = [];
+    this.total = 0;
+
+    this.agregarProducto = function () {
+        this.productos.push(prompt("Agregue el nombre del prodcuto: "));
+        this.total += parseInt(prompt("ingrese el precio del producto: "));
+    };
+        this.calcularDescuento = function () {
+        if (this.total > 100) {
+            this.total = this.total - this.total * 0.1;
+            console.log(`el valor con un descuento de 10% es ${this.total}`);
+
+        } else if (this.total > 50 && this.total <= 100) {
+            this.total = this.total - this.total * 0.05;
+            console.log(`el valor con un descuento de 5% es ${this.total}`);
+
+        } else {
+            console.log(`Sin descuento el valor es: ${this.total}`);
+        }
+    };
+}
+
+let compra = new Carrito()
+compra.agregarProducto()
+compra.calcularDescuento()
